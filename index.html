@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<title>RGB Color Generator</title>
+<style type="text/css">
+.main{
+width:200px;
+height:250px;
+background:rgb(24,194,204);
+border-radius:10px;
+margin:50px auto;
+position:relative;
+box-shadow:2px 2px 4px gray;
+}
+
+
+.rgbshow{width:100px;
+height:100px;
+background:rgb(143,102,255);
+margin:5px 50px;
+z-index:1;
+border-radius:50%;
+position:absolute;
+border:2px solid rgb(123,222,205);
+box-shadow:2px 2px 4px rgb(141,171,188)}
+
+.resultdiv{position:absolute;
+text-align:center;
+width:100%;
+height:110px ;
+margin:120px 0px}
+input[type="text"]{width:110px;
+font-weight:bold;
+padding:5px;
+border:none;
+border-radius:3px;
+border:2px solid rgb(169,255,255)}
+input[type="button"]{
+padding:5px;
+font-weight:bold;
+border-radius:4px;
+outline:none;
+border:1px solid rgb(169,255,255);
+
+}
+input[type="button"]:active{
+background:rgb(32,250,255);
+color:#fff
+
+}
+input[type="range"]{margin-top:5px}
+label{font-weight:bold}
+h2{text-align:center}
+</style>
+</head>
+<body>
+<h2><span style="color:red">R</span><span style="color:green">G</span><span style="color:blue">B</span> <span style="color:rgb(144,54,165)">Colour</span> <span style="color:rgb(143,102,255)">Generator</span></h2>
+<div class="main">
+  <div class="rgbshow"></div>
+  <div class="resultdiv">
+   <input  type="text" id="rgbcode" value="rgb(000,000,000)">
+   <input type="button" value="Copy" onclick="copybtn()"><br>
+   <label style="color:red">R</label><input type="range" id="redRange" min="0" max="255" oninput="range()"><br>
+   <label style="color:green">G</label><input type="range" id="greenRange" min="0" max="255" oninput="range()"><br>
+   <label style="color:blue">B</label><input type="range" id="blueRange" min="0" max="255" oninput="range()">
+  </div>
+</div>
+
+<script type="text/javascript">
+function range(){
+var redRange = document.getElementById("redRange").value;
+var greenRange = document.getElementById("greenRange").value;
+var blueRange = document.getElementById("blueRange").value;
+
+
+
+
+
+
+var rgbcode = document.getElementById("rgbcode");
+rgbcode.value="rgb("+redRange+","+greenRange+","+blueRange+")";
+
+
+
+
+
+var rgbshow = document.querySelector(".rgbshow");
+rgbshow.style.backgroundColor='rgb('+redRange+','+greenRange+','+blueRange+')';
+
+}
+
+function copybtn(){
+
+var rgbcode = document.getElementById("rgbcode");
+
+
+rgbcode.select();
+rgbcode.setSelectionRange(0, 99999); 
+document.execCommand("copy");
+
+
+swal("Copied RGB CODE!", 
+rgbcode.value, 
+"success")
+}
+
+</script>
+</body>
+</html>
